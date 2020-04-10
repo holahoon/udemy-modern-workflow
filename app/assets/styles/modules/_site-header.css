@@ -5,7 +5,12 @@
   z-index: 2;
   transition: background-color 0.5s ease-out;
   @mixin atMedium {
+    position: fixed;
     background-color: rgba($mainBlue, 0.3);
+
+    &--dark {
+      background-color: rgba(23, 51, 72, 0.85);
+    }
   }
 
   &--is-expanded {
@@ -55,7 +60,7 @@
       height: 3px;
       background-color: $mainWhite;
       transform-origin: 0 0;
-      transition: transform .3s ease-out;
+      transition: transform 0.3s ease-out;
     }
     &__middle {
       position: absolute;
@@ -65,7 +70,7 @@
       height: 3px;
       background-color: $mainWhite;
       transform-origin: 0 50%;
-      transition: all .3s ease-out;
+      transition: all 0.3s ease-out;
     }
     &::after {
       content: "";
@@ -76,7 +81,7 @@
       height: 3px;
       background-color: $mainWhite;
       transform-origin: 0 100%;
-      transition: transform .3s ease-out;
+      transition: transform 0.3s ease-out;
     }
 
     &--close-x {
@@ -100,10 +105,15 @@
     transform: translateX(-50%);
     background-color: $mainBlue;
     padding: 13px 29px;
+    transition: transform 0.3s ease-out;
     @mixin atMedium {
       left: auto;
       transform: translateX(0);
       padding: 25px 36px;
+
+      .site-header--dark & {
+        transform: scale(0.55);
+      }
     }
   }
 
