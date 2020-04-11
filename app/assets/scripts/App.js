@@ -13,12 +13,33 @@ if (module.hot) {
 
 /* === This is where the functionality starts === */
 
-// Mobile menu
-const mobileMenu = new MobileMenu();
+/* - Mobile menu - */
+new MobileMenu();
 
-// Reveal contents on scroll
+/* - Reveal contents on scroll - */
 new RevealOnSCroll(document.querySelectorAll(".feature-item"), 75);
 new RevealOnSCroll(document.querySelectorAll(".testimonial"), 60);
 
-// Sticky header on scroll on desktop
-const stickyHeader = new StickyHeader();
+/* - Sticky header on scroll on desktop - */
+new StickyHeader();
+
+/* - Modal - */
+// Load in the modal code(js file) whenever it's needed(when the buttons to open modal are clicked)
+let modal;
+document.querySelectorAll(".open-modal").forEach(el => {
+  el.addEventListener("click", e => {
+    e.preventDefault();
+
+    if (typeof modal == "undefined") {
+      // If the modal instance was never called
+      import(/* webpackChunkName: "modal" */"./modules/Modal")
+        .then(res => {
+          modal = new res.default(); // Create a new instance of the modal Class
+          setTimeout(() => modal.openTheModal(), 20);
+        })
+        .catch(() => console.log("There was a problem"));
+    } else {
+      modal.openTheModal();
+    }
+  });
+});
