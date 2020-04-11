@@ -1,6 +1,9 @@
 // Import css files
 import "../styles/styles.css";
 
+// Import lazysizes from lazy loading
+import "lazysizes";
+
 // Import JS files
 import MobileMenu from "./modules/MobileMenu";
 import RevealOnSCroll from "./modules/RevealOnScroll";
@@ -32,7 +35,7 @@ document.querySelectorAll(".open-modal").forEach(el => {
 
     if (typeof modal == "undefined") {
       // If the modal instance was never called
-      import(/* webpackChunkName: "modal" */"./modules/Modal")
+      import(/* webpackChunkName: "modal" */ "./modules/Modal")
         .then(res => {
           modal = new res.default(); // Create a new instance of the modal Class
           setTimeout(() => modal.openTheModal(), 20);
