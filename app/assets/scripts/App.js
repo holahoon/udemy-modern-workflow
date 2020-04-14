@@ -27,6 +27,9 @@ new RevealOnSCroll(document.querySelectorAll(".testimonial"), 60);
 /* - Sticky header on scroll on desktop - */
 new StickyHeader();
 
+/* - Client Area - */
+new ClientArea();
+
 /* - Modal - */
 // Load in the modal code(js file) whenever it's needed(when the buttons to open modal are clicked)
 let modal;
@@ -46,7 +49,4 @@ document.querySelectorAll(".open-modal").forEach(el => {
       modal.openTheModal();
     }
   });
-
-  /* - Client Area - */
-  new ClientArea();
 });
