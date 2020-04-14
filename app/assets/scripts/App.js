@@ -8,6 +8,7 @@ import "lazysizes";
 import MobileMenu from "./modules/MobileMenu";
 import RevealOnSCroll from "./modules/RevealOnScroll";
 import StickyHeader from "./modules/StickyHeader";
+import ClientArea from "./modules/ClientArea";
 
 // Accept the hot update if it makes sense (updates on the fly)
 if (module.hot) {
@@ -45,4 +46,7 @@ document.querySelectorAll(".open-modal").forEach(el => {
       modal.openTheModal();
     }
   });
+
+  /* - Client Area - */
+  new ClientArea();
 });
