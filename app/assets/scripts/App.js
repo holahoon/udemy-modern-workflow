@@ -10,6 +10,16 @@ import RevealOnSCroll from "./modules/RevealOnScroll";
 import StickyHeader from "./modules/StickyHeader";
 import ClientArea from "./modules/ClientArea";
 
+/* React Related Code Goes Here */
+import React from "react";
+import ReactDOM from "react-dom";
+import MyAmazingComponent from "./modules/MyAmazingComponent";
+
+ReactDOM.render(
+  <MyAmazingComponent />,
+  document.querySelector("#my-amazing-example")
+);
+
 // Accept the hot update if it makes sense (updates on the fly)
 if (module.hot) {
   module.hot.accept();
@@ -33,14 +43,14 @@ new ClientArea();
 /* - Modal - */
 // Load in the modal code(js file) whenever it's needed(when the buttons to open modal are clicked)
 let modal;
-document.querySelectorAll(".open-modal").forEach(el => {
-  el.addEventListener("click", e => {
+document.querySelectorAll(".open-modal").forEach((el) => {
+  el.addEventListener("click", (e) => {
     e.preventDefault();
 
     if (typeof modal == "undefined") {
       // If the modal instance was never called
       import(/* webpackChunkName: "modal" */ "./modules/Modal")
-        .then(res => {
+        .then((res) => {
           modal = new res.default(); // Create a new instance of the modal Class
           setTimeout(() => modal.openTheModal(), 20);
         })

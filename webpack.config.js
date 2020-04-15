@@ -54,7 +54,19 @@ let config = {
   entry: "./app/assets/scripts/App.js",
   plugins: pages,
   module: {
-    rules: [cssConfig]
+    rules: [
+      cssConfig,
+      {
+        test: /\.js$/,
+        exclude: /(mode_modules)/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env", "@babel/preset-react"]
+          }
+        }
+      }
+    ]
   }
 };
 
@@ -80,16 +92,6 @@ if (currentTask == "dev") {
 /* Build */
 if (currentTask == "build") {
   // ensure that JS supports older browsers as well - using babel
-  config.module.rules.push({
-    test: /\.js$/,
-    exclude: /(mode_modules)/,
-    use: {
-      loader: "babel-loader",
-      options: {
-        presets: ["@babel/preset-env"]
-      }
-    }
-  });
 
   cssConfig.use.unshift(MiniCssExtractPlugin.loader);
   postCSSPlugins.push(require("cssnano"));
